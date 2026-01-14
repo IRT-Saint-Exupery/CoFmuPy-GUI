@@ -90,7 +90,29 @@ npm install
 parcel build app.js
 
 ```
-This will compile node server and store the build artifacts in the `/node-server/dist` directory.
+This will compile node server and store the build artifacts in the `/node-server/dist` directory. Folder content :
+
+```bash
+browser/
+├─ assets/
+│  ├─ css/
+│  │  └─ vendors/
+│  │     ├─ bootstrap_*/          # Bootstrap css files
+│  │     └─ bootstrap-icons_*/    # Bootstrap icons files
+│  ├─ angular.svg
+│  ├─ api-compatibility.json      # json containing api compatibility with backend
+│  ├─ location-pin.svg
+│  ├─ logo.svg
+│  ├─ ScreenShot_App.png
+│  ├─ Start_CoFmuPy_Gui.bat       # Batch to start app as a standalone application (Windows)
+│  └─ Start_CoFmuPy_Gui.sh        # Batch to start app as a standalone application (Linux)
+├─ favicon.ico
+├─ index.html                     # Entry point view of the application
+├─ main-LR6WMCYY.js               # Application script
+├─ polyfills-5CFQRCPP.js          
+└─ styles-GSBFIRKP.css            # Application styles
+```
+
 
 **3. Assemble to make a standalone package**
 
