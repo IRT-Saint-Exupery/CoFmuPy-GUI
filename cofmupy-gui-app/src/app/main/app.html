@@ -1,0 +1,34 @@
+<div class="h-100 d-flex flex-column">
+    <header>
+        <app-header-toolbar (closeProjectEvent)="projectLoaded = false" (startSimulationEvent)="startSimulation($event)"></app-header-toolbar>
+    </header>
+    <main class="d-flex flex-column flex-grow-1">
+        <section class="content flex-grow-1 bg-dark">
+            <div class="h-100">
+                @if(!projectLoaded){
+                    @if(projectState==0){
+                        <app-project class="full-screen"
+                            (showProjectCreationCardEvent)="showCreateProjectForm()"
+                            (modifyProjectEvent)="showEditProjectForm($event)" [title]="'Available projects'"
+                            (loadProjectEvent)="retrieveCurrentProject()"></app-project>
+                    }
+                    @if(projectState==1){
+                        <app-create-project-form (showProjectSelectionEvent)="showLoadProjectForm()"
+                            [title]="'Create a new Edition Board'"
+                            (createProjectEvent)="retrieveCurrentProject()"></app-create-project-form>
+                    }
+                    @if (projectState==2) {
+                        <app-create-project-form (showProjectSelectionEvent)="showLoadProjectForm()"
+                            [title]="'Edit an existing Edition Board'" [projectIdToModify]="projectIdToModify"
+                            (createProjectEvent)="retrieveCurrentProject()"></app-create-project-form>
+                    }
+                }
+                @if (projectLoaded) {
+                    <app-edit-cosimulation class="full-screen" [project]="project"
+                        (closeProjectEvent)="projectLoaded = false"
+                        (projectChangeEvent)="retrieveCurrentProject()"></app-edit-cosimulation>
+                }
+            </div>
+        </section>
+    </main>
+</div>
